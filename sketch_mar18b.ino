@@ -1,25 +1,50 @@
-int ir=3,motor1c=5,motor1a=6,motor2c=9,motor2a=11;
+```cpp
+// IR sensor and motor control pins
+const int irSensor = 3;
+
+const int motor1Control1 = 5;
+const int motor1Control2 = 6;
+
+const int motor2Control1 = 9;
+const int motor2Control2 = 11;
+
 void setup() {
-  // put your setup code here, to run once:
-  pinMode(ir,INPUT);
-  pinMode(motor1c,OUTPUT);
-  pinMode(motor1a,OUTPUT);
-  pinMode(motor2c,OUTPUT);
-  pinMode(motor2a,OUTPUT);
+
+  // Set IR sensor as input
+  pinMode(irSensor, INPUT);
+
+  // Set motor control pins as outputs
+  pinMode(motor1Control1, OUTPUT);
+  pinMode(motor1Control2, OUTPUT);
+  pinMode(motor2Control1, OUTPUT);
+  pinMode(motor2Control2, OUTPUT);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
- int x=digitalRead(ir);
- if (x==0){
-  analogWrite(motor1c,0);
-  analogWrite(motor1a,0);
-  analogWrite(motor2c,100);
-  analogWrite(motor2a,0);
- }else{
-  analogWrite(motor1c,100);
-  analogWrite(motor1a,0);
-  analogWrite(motor2c,0);
-  analogWrite(motor2a,0);
- }
+
+  // Read the IR sensor
+  int sensorValue = digitalRead(irSensor);
+
+  if (sensorValue == 0) {
+
+    // Motor 1 stopped
+    analogWrite(motor1Control1, 0);
+    analogWrite(motor1Control2, 0);
+
+    // Motor 2 runs
+    analogWrite(motor2Control1, 100);
+    analogWrite(motor2Control2, 0);
+
+  } else {
+
+    // Motor 1 runs
+    analogWrite(motor1Control1, 100);
+    analogWrite(motor1Control2, 0);
+
+    // Motor 2 stopped
+    analogWrite(motor2Control1, 0);
+    analogWrite(motor2Control2, 0);
+  }
 }
+```
+
