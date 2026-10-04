@@ -59,7 +59,7 @@ The Arduino continuously reads the IR sensor. Depending on whether the sensor re
 Add a photo of your actual hardware setup here:
 
 ```markdown
-![Project Setup](images/project-setup.jpg)
+![Project Setup](images/ir.jpg)
 ```
 
 ## 🔮 Future Improvements
